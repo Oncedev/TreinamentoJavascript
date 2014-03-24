@@ -1,0 +1,27 @@
+<h1 class="section-title">O Objeto Global</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>O objeto global é o objeto onde estão definidos todos os simbolos que estão disponíveis para o programa.
+        </p>
+        <p>undefined, NaN, parseInt(), window e Math são exemplos de simbolos que são carregados no objeto global toda vez que o browser é carregado.
+        </p>
+        <p>
+        Os objetos que nós escrevemos na nossa aplicação também vão viver no objeto global.
+        </p>
+        <p>
+        Por isso é necessário cuidado ao se declarar objeto globais para evitar conflitos de variáveis que podem ser bem difíceis de serem detectados. Uma das técnicas é usando namespaces, vamos falar mais disso nas próximas seções. Abaixo segue um exemplo de como o conflito de variáveis pode gerar comportamentos estranhos.
+        </p>
+
+        <pre class="prettyprint">            
+            function imprimirTimeVencedor() {
+                return "Vitoria";
+            }
+
+            function imprimirTimeVencedor() {
+                return "Bahia";
+            }
+
+            imprimirTimeVencedor(); // => "Bahia"
+        </pre>
+    </div>
+</div>

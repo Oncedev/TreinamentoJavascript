@@ -1,0 +1,35 @@
+<h1 class="section-title">Strings</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>Formadas por aspas simples ou aspas duplas e por texto entre eles.</p>
+        <pre class="prettyprint">
+            var helloWorld1 = "Hello World";
+            var helloWorld2 = 'Hello World';
+
+            var string1 = "Ele disse: 'Ola!'";
+            var string2 = 'Ele disse: "Ola!"';
+        </pre>
+
+        <p>
+            O tipo String tem alguns métodos pré-definidos e que são bastante uteis quando estamos utilizando strings nas nossas aplicações.
+        </p>        
+
+        <pre class="prettyprint">
+var s = "hello, world";  // Declarando um novo texto
+
+console.debug(s.charAt(0));             // => "h": Pega o primeiro caracter.
+console.debug(s.charAt(s.length-1));    // => "d": Pega o último caracter.
+console.debug(s.substring(1,4));    // => "ell": Pega a substring comecando do intervalo passado
+console.debug(s.slice(1,4));        // => "ell": Pega a substring comecando do intervalo passado 
+console.debug(s.slice(-3));             // => "rld": Obtém os ultimos 3 caracteres
+console.debug(s.indexOf("l"));          // => 2: Posição da primeira vez que aparece o 'l'
+console.debug(s.lastIndexOf("l"));      // => 10: Última posição em que o 'l' aparece 
+console.debug(s.indexOf("l", 3));       // => 3: Posição do primeiro 'l' no ou após o indice 3
+console.debug(s.split(", "));           /* => ["hello", "world"] separa a string em um array de 
+                                         *    strings usando a string de separação
+                                         */
+console.debug(s.replace("h", "H"));// => "Hello, world": substitui a primeira instância de h por "H"
+console.debug(s.toUpperCase()); // => "HELLO, WORLD": Eleva todos os caracteres para caixa alta
+        </pre>
+    </div>
+</div>

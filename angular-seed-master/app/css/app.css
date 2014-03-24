@@ -1,0 +1,142 @@
+/* app css stylesheet */
+
+body, header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: 0 0;
+}
+
+.header {
+  background: #5d7787 url(../img/bg-header.png);
+  min-height: 138px;
+  min-width: 1100px;
+  color: #fff;
+}
+
+.header-inside {
+  padding-top: 22px;
+  position: relative;
+  text-align: center;
+}
+
+.site-title {
+  width: 500px;
+  letter-spacing: .035em;
+  font-family: LeagueGothic,"Arial Narrow",sans-serif;
+  font-size: 2em;
+  padding: 20px 0 0;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-shadow: rgba(0,0,0,.3)2px 2px 2px;
+}
+
+.site-subtitle {
+  width: 500px;
+  padding-top: 4px;
+  letter-spacing: .035em;
+  font-family: LeagueGothic,"Arial Narrow",sans-serif;
+  font-size: 0.5em;
+  padding: 4px 0 0;
+  overflow: hidden;
+  text-shadow: rgba(0,0,0,.3)2px 2px 2px;
+}
+
+a.logo-anchor:link, a.logo-anchor:visited {
+  float: left;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.globalwidth {
+  width: 94%;
+  padding-left: 50px;
+  padding-right: 26px;
+  margin: 0 auto;
+}
+
+.content {
+  padding-top: 30px;
+}
+
+.content-left {
+  margin-right: 10px;
+  width: 60%; 
+  padding-right: 15px;
+  margin-right: 0;
+  float: left;
+  width: 65%;
+  padding: 0 40px 0 0;
+  margin: 0 24px 0 0;
+  min-height: 800px;
+}
+
+.sidebar {
+  float: right;
+  width: 280px;
+  padding: 22px;
+  margin: -30px 0 30px 0;
+  background-color: #E6E6E6;
+}
+
+.sidebar .index-title {
+  color: #4D4D4D;
+  margin-top: 20px;
+  font-family: LeagueGothic,sans-serif;
+  font-weight: 400;
+  font-size: 1.8em;
+  line-height: 1;
+  clear: left;
+  padding-left: 15px;
+}
+
+.sidebar .section-title {
+  padding-left: 15px;
+  color: #909090;
+  font-size: 1.2em;
+}
+
+.content-left .section-title {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.sections {
+  list-style: none;
+  padding: 0px;
+}
+
+h1, h2 {
+  font-family: LeagueGothic,"Arial Narrow",sans-serif;
+  font-weight: 400;
+  margin: 0 0 1em;
+  font-size: 3.5em;
+  line-height: 1;
+  clear: left;
+  color: #4f5e67;
+  letter-spacing: .024em;
+  -webkit-transition: font-size .7s linear;
+  -moz-transition: font-size .7s linear;
+  -o-transition: font-size .7s linear;
+  transition: font-size .7s linear;
+}
+
+.section-content p {
+  color: #4D4D4D;
+  font-size: 1.1em;
+  font-family: Georgia, serif;
+  letter-spacing: .05em;
+}
+
+.section-content .subsection {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.section-content .subsection p, .section-content .subsection ul, .section-content .subsection pre {
+  text-align: left;
+}
+

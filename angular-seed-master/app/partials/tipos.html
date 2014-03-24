@@ -1,0 +1,55 @@
+<h1 class="section-title">Tipos</h1>
+<div class="section-content">
+	<div class="subsection">
+		<p>
+			Tipos em Javascript podem ser primitivos ou objetos. 	
+		</p>
+		<p>
+			São tipos primitivos números, strings, booleanos, null e undefined. 	
+		</p>
+		<p>
+			Todos os outros são considerados objetos.
+		</p>
+
+		<p>
+			Os tipos primitivos no Javascript são considerados tipos por valor, isso significa que duas variáveis de tipos primitivos são consideradas iguais se elas possuem o mesmo valor. Por outro lado, se duas variáveis apontam para o mesmo tipo, a mudança de uma variável não altera o valor da outra variável.
+		</p>
+
+		<pre class="prettyprint">
+			var hello1 = "Hello!";
+			var hello2 = "Hello!";
+
+			console.debug(hello1 === hello2); // => true
+
+			hello2 = hello1;
+			hello2 = "Hello World!";
+
+			console.debug(hello1); // => "Hello!";
+			console.debug(hello2); // => "Hello World!";
+
+		</pre>
+
+		<p>
+			Os objetos em Javascrip são considerados por referência, isso significa que dois objetos só são considerados iguais se possuem a referência para o mesmo espaço de memória. Como as variáveis não guardam o valor verdadeiro de um objeto e sim um ponteiro para o valor verdadeiro, se duas variáveis apontam para o mesmo objeto, uma mudança em uma variável também altera o valor da outra variável.
+		</p>		
+
+		<pre class="prettyprint">
+			var obj1 = {x: 1};
+			var obj2 = {x: 1};
+
+			console.debug(obj1 === obj2); // => false
+
+			obj1 = obj2;
+
+			console.debug(obj1 === obj2); // => true
+
+			obj1 = {x: 2};
+
+			console.debug(obj1.x); // => 2;
+			console.debug(obj2.x); // => 2;
+
+		</pre>
+
+				
+	</div>
+</div>

@@ -1,0 +1,35 @@
+<h1 class="section-title">Escopo de variáveis</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>No Javascript as variáveis podem possuir escopo global, quando declaradas no objeto global, ou escopo local quando declaradas dentro de objetos ou de funções.</p>
+        <p>Variáveis declaradas no escopo global são sobreescritas por variáveis escopo local, caso ambas possuam o mesmo nome.</p>
+        <p>No Javascript não possuem variáveis de escopo de bloco, variáveis declaradas dentro de blocos passam automaticamente a fazer parte do escopo local</p>
+
+        <p>Confira alguns exemplo do uso de escopos abaixo.</p>
+
+        <pre class="prettyprint">
+            var global = "escopo global";
+
+            function imprimeVariavelGlobal() {
+                console.debug(global); // => escopo global
+            }
+
+            function imprimeVariavelLocal() {
+                var global = "123"; 
+                console.debug(global); // => 123, variável local sobreescreve variável global
+            }
+
+            function imprimeVariabelComEscopoDeBloco() {
+
+                if (true) {
+                    var escopoBloco1 = 123;     
+                } else {
+                    var escopoBloco2 = 456;     
+                }
+
+                console.debug(escopoBloco1); // => 123, variável declarada no bloco está no escopo local
+                console.debug(escopoBloco2); // => undefined
+            }
+        </pre>
+    </div>
+</div>

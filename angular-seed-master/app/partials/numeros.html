@@ -1,0 +1,49 @@
+<h1 class="section-title">Números</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>
+            Não existe distinção entre inteiros e decimais.
+        </p>
+        <p>
+            Suporte a operações básicas e mais uma série de operações suportadas pelo objeto Math.
+        </p>
+
+        <pre class="prettyprint">
+            console.debug(Math.pow(2,53));   // => 9007199254740992: 2 elevando a 53
+            console.debug(Math.round(.6));   // => 1.0: arredondar para o inteiro mais próximo
+            console.debug(Math.ceil(.6));    // => 1.0: arredondar para cima
+            console.debug(Math.floor(.6));   // => 0.0: arredondar para baixo
+            console.debug(Math.abs(-5));     // => 5: retorna o valor absoluto de 5
+            console.debug(Math.max(5,6,7));  // => 7: Retorna o maior valor
+            console.debug(Math.min(5,6,7));  // => 5: Retorna o menor valor
+            console.debug(Math.random());    // Retorna um número randomico entre 0 e 1.0
+            console.debug(Math.sqrt(3));     // => 1.7320508075688772: Retorna a raiz de 3
+            console.debug(Math.pow(3, 1/3)); // => 1.4422495703074083: Raiz cúbica de 3
+            console.debug(Math.sin(0));      // => 0: Calcula o seno
+            console.debug(Math.log(10));     // => 2.302585092994046: Log de 10
+        </pre>
+
+        <p>Existem variáveis globais pré-definidas para representar os valores infinito e NaN.</p>
+
+        <pre class="prettyprint">
+            console.debug(Infinity);                    // Variavel inicializada com o valor infinito
+            console.debug(Number.POSITIVE_INFINITY);    // Mesmo valor mas read-only
+            console.debug(1/0);                         // Divisão que retorna para infinito
+            console.debug(Number.MAX_VALUE + 1);        // Avalia como 1.7976931348623157e+308
+
+            console.debug(Number.NEGATIVE_INFINITY);    // Avalia como infinito negativo
+            console.debug(-Infinity);                   // Avalia como infinito negativo
+            console.debug(-1/0);                        // Avalia como infinito negativo
+            console.debug(-Number.MAX_VALUE - 1);       // Avalia como -1.7976931348623157e+308
+
+            console.debug(NaN);                         // Not a Number ou Não é um número
+            console.debug(Number.NaN);                  // Mesmo valor mas read-only
+            console.debug(0/0);                         // Avaliado como NaN
+
+            console.debug(Number.MIN_VALUE/2);          // Avalia como zero
+            console.debug(-Number.MIN_VALUE/2);         // Zero negativo
+            console.debug(-1/Infinity);                 // Zero negativo
+            console.debug(-0);                          // Zero
+        </pre>        
+    </div>
+</div>

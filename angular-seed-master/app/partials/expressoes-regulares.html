@@ -1,0 +1,137 @@
+<h1 class="section-title">Expressões Regulares</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>Baseada nas expressões regulares da linguagem Perl.</p>
+        <p>Define um padrão de carácteres que podem ser utilizadas para validar strings, fazer buscas em strings, fazer substituição de caracteres entre outros usos.</p>
+
+        <pre class="prettyprint">
+            var expr1 = /\d{2,4}/;
+            var expr2 = /\w{3}\d?/; 
+        </pre>
+    </div>
+    <div class="subsection">
+
+        <p>A tabela abaixo mostra quais são os caracteres que podem ser usados em uma expressão regular.</p>
+
+        <table>
+            <tr>
+                <th>Caracteres</th>
+                <th>Padrão de match</th>
+            </tr>
+            <tr>
+                <td>Qualquer literal</td>
+                <td>Faz o match dele mesmo</td>
+            </tr>
+            <tr>
+                <td>[...]</td>
+                <td>Qualquer caracter dentros dos cochetes</td>
+            </tr>
+            <tr>
+                <td>[^...]</td>
+                <td>Qualquer caracter exceto o dos cochetes</td>
+            </tr>
+            <tr>
+                <td>\w</td>
+                <td>Qualquer caracter do ascii. [a-zA-Z0-9_]</td>
+            </tr>
+            <tr>
+                <td>\W</td>
+                <td>Qualquer caracter não ascii</td>
+            </tr>
+            <tr>
+                <td>\s</td>
+                <td>Qualquer espaço em branco</td>
+            </tr>
+            <tr>
+                <td>\S</td>
+                <td>Qualquer caracter que não seja espaço em branco</td>
+            </tr>
+            <tr>
+                <td>\d</td>
+                <td>Qualquer dígito</td>
+            </tr>
+            <tr>
+                <td>\D</td>
+                <td>Qualquer caracter que não seja número</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="subsection">
+        <p>A medida que as expressões regulares se tornam mais complexas se torna necessário especificar a quantidade de repetições que um determinado conjunto de caracteres deve aparecer. Os caracteres abaixo são utilizados para o número de repetições.</p>
+
+        <table>
+            <tr>
+                <th>Caracteres</th>
+                <th>Significado</th>
+            </tr>
+            <tr>
+                <td>{n,m}</td>
+                <td>O Item anterior deve aparecer pelo menos n vezes e não mais que m vezes</td>
+            </tr>
+            <tr>
+                <td>{n,}</td>
+                <td>Item anterior deve aparecer pelo menos n vezes</td>
+            </tr>
+            <tr>
+                <td>{n}</td>
+                <td>Item anterior deve aparecer exatamente n vezes</td>
+            </tr>
+            <tr>
+                <td>?</td>
+                <td>Item anterior deve aparecer nenhuma ou uma vez. Equivalente a {0,1}</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td>Item anterior deve aparecer pelo menos uma vez. Equivalente a {1,}</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>Item anterior deve aparecer qualquer quantidades de vezes, incluindo zero. Equivalente a {0,}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="subsection">
+        <p>Por último, existem as flags que especificam determinados comportamentos dos padrões de matching</p>
+
+        <table>
+            <tr>
+                <th>Caracteres</th>
+                <th>Significado</th>
+            </tr>
+            <tr>
+                <td>i</td>
+                <td>Executa um match não case sensitivo</td>
+            </tr>
+            <tr>
+                <td>g</td>
+                <td>Faz o match para todas as ocorrências ao invés de parar na primeira ocorrência</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="subsection">
+        <p>As expressões regulares podem ser executadas a partir do tipo String ou usando o objeto RegExp. Abaixo seguem exemplos nas duas maneiras.</p>
+
+        <pre class="prettyprint">
+            // Usando o tipo String
+            "JavaScript".search(/script/i); // => 4: Retorna o indice da palavra buscada 
+            
+            "Javascript".replace(/javascript/gi, "JavaScript"); 
+            /* => JavaScript: Faz replace na string sem 
+             * considerar case sensitive e valendo para um número infinito de matches.
+             */
+
+            "1 plus 2 equals 3".match(/\d+/g); 
+            // => ["1","2","3"]: Retorna os matchs para a expressão regular especificada.  
+
+            // Usando o objeto RegExp
+            new RegExp("\\d{5}", "g").exec("41500"); 
+            // => ["41500"]: Retorna a string que corresponde ao padrão
+            
+            new RegExp("\\d{5}", "g").test("41500");
+            // => true: Testa se a string corresponde ao padrão
+        </pre>
+    </div>
+</div>

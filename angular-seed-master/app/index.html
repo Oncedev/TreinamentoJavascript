@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="header-inside globalwidth">
+    <div class="site-title">
+      A Javascript Tutorial
+      <div class="site-subtitle">
+      by paulo ortins
+    </div>
+    </div>    
+  </div>
+</header>
+<div class="content globalwidth">
+  <div class="content-left">
+  <div ng-view></div>
+</div>
+<aside class="sidebar">
+  <h2 class="index-title">Index</h2>
+  <ul class="sections">
+    <li>
+      <a class="section-title" href="#/historia">
+        1. História
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/por-que-o-javascript-esta-sendo-tao-usado">
+        2. Por que o Javascript está sendo tão usado ?
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/estrutura-lexica">
+        3. Estrutura Léxica
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/tipos">
+        4. Tipos
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/numeros">
+        5. Números
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/strings">
+        6. Strings
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/expressoes-regulares">
+        7. Expressões Regulares
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/objeto-global">
+        8. Objeto Global
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/escopo-variaveis">
+        9. Escopo de Variáveis
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/igualdade-diferenca">
+        10. Igualdade/Diferença
+      </a>
+    </li>
+    <li>
+      <a class="section-title" href="#/objetos">
+        11. Objetos
+      </a>
+    </li>
+  </ul>
+  
+  
+</aside>  
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+</body>
+</html>

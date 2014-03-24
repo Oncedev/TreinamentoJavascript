@@ -11,6 +11,6 @@ console.debug(s.indexOf("l", 3)); 		// => 3: Posição do primeiro 'l' no ou ap�
 console.debug(s.split(", ")); 			/* => ["hello", "world"] separa a string em um array de 
 										 *    strings usando a string de separação
 										 */
-console.debug(s.replace("h", "H")); 	// => "Hello, world": substitui todas as instâncias de h por "H"
+console.debug(s.replace("h", "H")); 	// => "Hello, world": substitui a primeira instância de h por "H"
 console.debug(s.toUpperCase()); 		// => "HELLO, WORLD": Eleva todos os caracteres para caixa alta
   

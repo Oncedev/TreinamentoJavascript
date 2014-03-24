@@ -1,0 +1,67 @@
+<h1 class="section-title">Estrutura Léxica</h1>
+<div class="section-content">
+	<div class="subsection">
+		<p>
+			O Javascript é uma linguagem case-sensitive.
+		</p>
+
+		<pre class="prettyprint">
+			paulo == paulo
+			Paulo != paulo			
+		</pre>		
+				
+	</div>
+	<div class="subsection">
+		<p>
+			Comentários no Javascript podem ser comentários de uma linha ou comentários de múltiplas linhas.
+		</p>
+
+		<pre class="prettyprint">
+			// Uma linha de comentário
+
+			/*	Várias linhas
+			 *	de comentário      
+			 */  			
+		</pre>						
+	</div>
+
+	<div class="subsection">
+		<p>
+			Comentários no Javascript podem ser comentários de uma linha ou comentários de múltiplas linhas.
+		</p>
+
+		<pre class="prettyprint">
+			12    // Número 12
+			1.2  // Número decimal 1.2
+			"hello world" // Uma string declarada com asdpas duplas
+			'Oi' // String declarada com aspas simpels 
+			true // Valor booleano
+			false // Outro valor booleano
+			/javascript/gi 	// Literal representando uma expressão regular
+			null 			// Sem valor
+			undefined 	// Valor não declarado
+			{ x:1, y:2 }        // Objeto com atributos x e y
+			[1,2,3,4,5]       // Array de valores 			
+		</pre>						
+	</div>
+
+	<div class="subsection">
+		<p>
+			Ponto e virgula são opcionais, porém é uma boa prática usa-los, já que podem causar erros de interpretação.
+		</p>
+
+		<pre class="prettyprint">
+			function comPontoVirgula() {
+				return true;
+			}
+
+			function semPontoVirgula() {
+				return
+					false;
+			}
+
+			console.debug(comPontoVirgula()); // => true
+			console.debug(semPontoVirgula()); // => undefined
+		</pre>						
+	</div>
+</div>

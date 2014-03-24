@@ -1,0 +1,44 @@
+<h1 class="section-title">Igualdade/Diferença</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>O Javascript possui dois operadores de igualdade/diferença.</p>
+        <p>Os operadores === e o !== são os operadores estritos. Ao usar esses operadores, os objetos só são considerados iguais caso eles sejam do mesmo tipo e possuam exatamente o mesmo valor.</p>
+
+        <pre class="prettyprint">
+            var bool1 = "1" === "1"; // => true
+            var bool2 = 1 !== "1"; // => false
+        </pre>        
+    </div>
+
+    <div class="subsection">
+        <p>Os operadores == e != são usadas da mesma forma que os operadores estritos com a diferença que caso os valores não sejam do mesmo tipo, esses operadores admitem que sejam efetuadas conversões implicitas para que os valores possam ser considerados iguais.
+        </p>        
+
+        <pre class="prettyprint">
+            var bool1 = null == undefined;
+            var bool2 = 1 == "1";
+        </pre>        
+    </div>
+
+    <div class="subsection">
+        <p>Abaixo seguem exemplos do comportamento dos dois tipos de operadores.
+        </p>        
+
+        <pre class="prettyprint">
+            1 == 1 // => true
+            1 === 1 // => true
+            "1" == "1" // => true
+            "1" === "1" // => true
+            1 == "1" // => true
+            1 === "1" // => false
+            false == false // => true
+            false === false // => true
+            null == undefined // => true
+            null === undefined // => false
+            1 == true // => true
+            1 === true // => false
+            "1" == true // => true
+            "1" === true // => false    
+        </pre>        
+    </div>
+</div>

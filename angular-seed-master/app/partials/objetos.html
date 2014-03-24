@@ -1,0 +1,150 @@
+<h1 class="section-title">Objetos</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>Objetos são a unidade básica do javascript, com exceção dos números e strings todo o resto é considerado objeto.</p>
+
+        <p>Objetos funcionam como HashMaps ou Dictionary, onde chaves são strings e o valor são primitivos ou outros objetos.
+        </p>
+
+        <p>Objetos podem ser criados de 3 formas diferentes.</p>
+
+        <p>Usando literais.</p>     
+
+        <pre class="prettyprint">
+            var vazio= {};
+            var ponto = { x:0, y:0 };
+            var livro = {
+                titulo: "JavaScript", 
+                author: { 
+                    nome: “Paulo”
+                }
+            };
+        </pre>
+    </div>
+    <div class="subsection">
+        <p>Usando prefixo new.</p>
+
+        <pre class="prettyprint">
+            var o = new Object();
+            var a = new Array();
+            var d = new Date();
+            var r = new RegExp("js");
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>Ou usando o método Object.create</p>
+
+        <pre class="prettyprint">
+            var Pessoa = {
+                nome: "Paulo"
+            };
+
+            var paulo = Object.create(Pessoa);
+            console.debug(paulo.nome);
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>As propriedades ou atributos de um objeto podem ser acessadas de duas maneiras, isso é bom porque nos traz flexibilidade quando estamos desenvolvendo nossas aplicações.</p>
+
+        <p>Podemos usar a dot notation para acessar as propriedades, como no exemplo abaixo.</p>
+
+        <pre class="prettyprint">
+            var pessoa = {
+                nome: "Paulo",
+                nacionalidade: "Brasil",
+                idade: 25
+            };
+
+            pessoa.nome // => "Paulo"
+            pessoa.nacionalidade // => "Brasil"
+            pessoa.idade // => 25
+        </pre>
+    </div>
+
+    <div class="subsection">        
+        <p>Podemos usar uma notação semelhante aos hash maps/dictionary. Esse tipo de notação é muito útil quando não temos conhecimento do nome da propriedade antes de executar alguma operação.</p>
+
+        <pre class="prettyprint">
+            var pessoa = {
+                nome: "Paulo",
+                nacionalidade: "Brasil",
+                idade: 25
+            };
+
+            pessoa["nome"] // => "Paulo"
+            pessoa["nacionalidade"] // => "Brasil"
+            pessoa["idade"] // => 25
+        </pre>
+    </div>
+
+    <div class="subsection">        
+        <p>Podemos testar a existência de uma propriedade em um determinado objeto de duas maneiras.</p>
+
+        <p>Usando o operador in.</p>
+
+        <pre class="prettyprint">
+            var pessoa = {
+                nome: "Paulo",
+                nacionalidade: "Brasil",
+                idade: 25
+            };
+
+            "nome" in pessoa // => true
+            "endereco" in pessoa // => false
+        </pre>
+    </div>
+
+    <div class="subsection">        
+        <p>Podemos testar a existência de uma propriedade em um determinado objeto de duas maneiras.</p>
+
+        <p>Usando o operador in.</p>
+
+        <pre class="prettyprint">
+            var pessoa = {
+                nome: "Paulo",
+                nacionalidade: "Brasil",
+                idade: 25
+            };
+
+            "nome" in pessoa // => true
+            "endereco" in pessoa // => false
+        </pre>
+
+        <p>Ou testando o valor da propriedade.</p>
+
+        <pre class="prettyprint">
+            var pessoa = {
+                nome: "Paulo",
+                nacionalidade: "Brasil",
+                idade: 25
+            };
+
+            pessoa["nome"] // => "Paulo"
+            pessoa["endereco"] // => undefined
+        </pre>
+    </div>
+
+    <div class="subsection">        
+        <p>Podemos, também, enumerar propriedades de objeto através de loops, como por exemplo, para copiar um objeto.
+        </p>        
+        <pre class="prettyprint">
+            var pessoa = {
+                nome: "Paulo",
+                nacionalidade: "Brasil",
+                idade: 25
+            };
+
+            var trabalhador = {
+                salario: 760.0
+            };
+
+            trabalhador = extend(trabalhador, pessoa);
+
+            trabalhador.nome // => "Paulo"
+            trabalhador['nacionalidade'] // => "Brasil"
+            trabalhador['salario'] // => 760.0
+        </pre>
+    </div>
+</div>   
