@@ -1,0 +1,255 @@
+<h1 class="section-title">Funções</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>Talvez seja a construção mais utilizada, mais complexa e mais poderosa no Javascript</p>
+        
+        <p>Funções podem adquirir diferentes nomes que variam de acordo com o local que ela é executada, por exemplo, se funções são declaradas dentro de objetos nós costumamos chama-las de métodos. Por outro lado, se utilizarmos elas para criação de novos objeto, elas não chamadas de construtores.</p>
+
+        <p>Funções também são objetos. Isso significa que elas também possuem métodos e também podem possuir propriedades.</p>
+
+        <p>Funções podem ser declaradas dentro de outras funções herdando o escopo de variáveis da função externa.</p>
+    </div>
+
+    <div class="subsection">
+        <h2 class="subsection-title">Declaração de funções</h2>
+
+        <p>Funções podem ser declaradas usando nomes ou não, podem ser declaradas no escopo global ou atribuídas a uma variável. Algumas funções são também declaradas e imediatamente executadas.</p>
+
+        <pre class="prettyprint">
+            function funcaoA() {
+                return "A";
+            } 
+
+            var funcaoB = function() {
+                return "B";
+            }
+            // funcaoB é agora uma variável que aponta para uma função e pode ser executada.
+
+
+            var resultadoFuncao = function() {
+                return "C";
+            }();
+            // resultadoFuncao é o resultado da função executada, ou seja, "C"
+        </pre>
+
+        <p>
+            Funções também podem ser declaradas dentro de outras funções como no exemplo abaixo.
+        </p>
+
+        <pre class="prettyprint">
+            function somaDosQuadrados(a, b) {
+                function quadrado(x) {
+                    return x * x;
+                }
+
+                return quadrado(a) + quadrado(b);
+            }
+
+            somaDosQuadrados(1,2); // => 5
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <h2 class="subsection-title">Invocações de funções</h2>
+
+        <p>As funções no Javascript podem ser invocadas de 4 formas diferentes.</p>
+
+        <p>Elas podem ser invocadas como funções, que como vimos antes, é quando elas não pertencem a um objeto e nem são usadas como construtorres. Os exemplos abaixo mostram essas invocações</p>
+
+        <pre class="prettyprint">            
+            somaDosQuadrados(1,2);
+            obterUsuario();
+        </pre>
+
+        <p>Funções também podem ser invocadas como métodos, quando essas pertencem a algum objeto.</p>
+
+        <pre class="prettyprint">
+            var pessoa = {
+                obterNome: function() {
+                    return "ola!";
+                }
+            };
+
+            pessoa.obterNome(); // => "ola!";
+        </pre>
+
+        <p>
+            Funções podem ser usadas como construtores com o uso do prefixo new.
+        </p>
+
+        <pre class="prettyprint">
+            function Pessoa() {
+
+            }
+
+            var paulo = new Pessoa();
+        </pre>
+
+        <p>
+            Como falamos antes, as funções no javascript são também objeto e possuem seus próprios métodos, dois desses métodos, o apply e o call, nos permitem invocar funções indiretamente, especificando explicitamente o contexto de invocação.
+        </p>
+
+        <pre class="prettyprint">
+            function somarDoisNumeros() {
+                return this.a + this.b;
+            }
+
+            somarDoisNumeros.apply({a: 1, b:2});
+            somarDoisNumeros.call({a: 1, b:2});
+        </pre>
+    </div>
+    
+    <div class="subsection">
+        <h2 class="subsection-title">Parâmetros</h2>
+
+        <p>As definições de funções no javascript, por ser uma linguagem dinâmica, não especificam o tipo de parâmetro que elas esperam receber. Na verdade, diferente de outras linguagens de programação, as funções no javascript nem checam se elas estão sendo chamadas com a quantidade correta de parâmetros.</p>
+
+        <p>Ao declarar funções com menos parâmetros do que as que a função especifica, os parâmetros omitidos assumem o valor undefined. No caso contrário, ao se declarar funções com mais parâmetros do que os necessário pela função, esses parâmetros não podem ser acessados através dos parâmetros da função, nesse caso, temos que usar o objeto arguments que guarda as informações de todos os parâmetros passados para a função.</p>
+
+        <pre class="prettyprint">
+            function menosParametros(x, y, x) {
+
+            }
+
+            menosParametros(1); // => y e x são undefined
+
+            function maisParametros(x) {
+                return arguments.length;
+            }
+
+            maisParametros(4, 5, 6);
+            // arguments.length dentro da função tem o valor de 3
+            /* 
+             * Cada posição de arguments também é acessível dentro da função
+             * arguments[2] = 6
+             */
+
+        </pre>
+
+        <p>
+            Um prática muito comum no Javascript é o uso de objetos como argumentos. Observe o construtor abaixo, a menos que consultemos a API a cada momento, é muito díficil identificar o que significa cada parâmetro na função.
+        </p>
+        
+        <pre class="prettyprint">        
+            transferirDinheiro("123-1", "125-1", 100.0, '17/03/2014');        
+        </pre>
+
+        <p>
+            A utilização de objetos como parâmetros torna muito mais fácil a identificação desses parâmetros.
+        </p>
+
+        <pre class="prettyprint">
+            transferirDinheiro({
+                contaDebitada: "123-1",
+                contaCreditada: "125-1",
+                valor: 100.0,
+                dataTransacao: "17/03/2014"
+            });
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <h2 class="subsection-title">Funções como dados</h2>
+
+        <p>No Javascript funções são tratados como dados, isso significa que funções podem armazenar variáveis, um vetor pode conter uma lista de funções, objetos podem ter atributos definidos como funcões e funcões podem receber outras funções como parâmetros e também podem retornar funções como o resultado de execução</p>
+
+        <pre class="prettyprint">
+            function defineMultiplicador(multiplicador) {
+                return function(valor) {
+                    return valor * multiplicador;
+                }
+            }
+
+            defineMultiplicador(2)(3);
+
+            var soma = function(a,b) {return a + b;};
+            var subtracao = function(a,b) {return a-b;}.
+
+            function executaOperacao(num1, num2, operacao) {
+                return operacao(num1, num2);
+            }
+
+            executaOperacao(2,1, soma);
+            executaOperacao(2,1, subtracao);
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <h2 class="subsection-title">Funções como namespaces</h2>
+
+        <p>Suponhamos que nós fossemos pagos para desenvolvermos um contador que será utilizado em múltiplas aplicações, o contador deverá armazenar um contador assim como fornecer um método para extrair o próximo número. Em um passado não tão distante, eu já escrevi o seguinte código.</p>
+
+        <pre class="prettyprint">
+        var contador = 0;
+
+        function proximoNumero() {
+            return contador++;
+        }
+        </pre>
+
+        <p>A abordagem acima, embora funcione, possui alguns problemas.</p>
+        <p>A minha variável contador está exposta no escopo global, isso significa que ela pode ser alterada por qualquer usuário resultando em possíveis duplicações.</p>
+        <p>Eu também estou sujando o escopo global com duas variáveis, se várias outras pessoas usarem a mesma abordagem que eu usei, no futuro, meu escopo global pode ficar bem poluído, apresentando inúmeros conflitos de nomes.</p>
+
+        <p>O javascript nos permite usar funções para estabelecer namespaces, escondendo as nossas variáveis em um escopo local, assim como evitando a poluição do namespace global. O exemplo abaixo exemplifica essa técnica.</p>
+
+        <pre class="prettyprint">
+            var Contador = (function() {
+                var contador = 0;
+                return {
+                    proximoNumero: function() {
+                        return contador++;
+                    }
+                };
+            }());
+
+            Contador.proximoNumero() // => 0
+            Contador.proximoNumero() // => 1
+            Contador.proximoNumero() // => 2
+        </pre>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Closures</h2>
+        <p>
+            Closure significa encerramento, fecho. O closure de uma função Javascript é formado pela junção da função e o conjunto de variáveis que estão declaradas naquele escopo de execução. O nosso contador acima é um exemplo de uso do closure, onde a variavel contador vive no closure da função proximoNúmero.
+        </p>
+        <p>
+            No exemplo abaixo, vou mostrar, como os closures podem influenciar a execução de uma função. No primeiro exemplo a função é executada no escopo global que declara uma variável de nome escopo e seu valor é atribuído ao closure da função. No segundo caso, a função getEscopoLocal é declarada dentro do escopo de uma outra função, herdando assim, o escopo de variáveis dessa função.
+        </p>
+
+        <pre class="prettyprint">
+            var escopo = "escopo global";
+
+            function getEscopoGlobal() {
+                return escopo;
+            }
+
+            function funcaoLocal() {
+                var escopo = "escopo local";
+                function getEscopoLocal() {
+                    return escopo;
+                }
+
+                return getEscopoLocal();    
+            }
+
+            getEscopoGlobal();
+            funcaoLocal();
+        </pre>
+
+        <p>As vezes várias funções podem compartilhar variáveis no momento de declaração do closure. Vide o exemplo abaixo, embora o esperado seja cada função retornar o seu respectivo índice, na prática, isso não acontece, visto que as funções compartilham a mesma variável.</p>
+
+        <pre class="prettyprint">
+            var array = [];
+
+            for (var i = 0; i < 10; i++) {
+                array[i] = function() {
+                    return i;
+                }
+            }
+
+            array[0]();
+            array[1]();
+        </pre>
+    </div>
+</div>

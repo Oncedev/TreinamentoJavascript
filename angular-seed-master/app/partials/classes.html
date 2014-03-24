@@ -1,0 +1,73 @@
+<h1 class="section-title">Classes</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>A herança no Javascript é feita através de protótipos, cada objeto Javasript tem um segundo objeto associado a ele, através da propriedade prototype. Esse objeto associado, estabelece novas propriedade e métodos que vão ser herdados pelo objeto. No exemplo abaixo, o objeto ninja, herda os comportamentos do prototipo Pessoa que foram atribuídos alterando o seu prototype.
+        </p>
+        <pre class="prettyprint">
+            function Pessoa() {
+
+            }
+
+            Pessoa.prototype.nome = "Paulo";
+
+            var pessoa = new Pessoa();
+
+            function Ninja() {
+
+            }
+
+            Ninja.prototype = pessoa;
+
+            var ninja = new Ninja();
+            console.debug(ninja.nome);
+        </pre>
+
+        <p>
+            Não vou entrar no mérito de como podemos escrever Javascript OO usando prototypes, ao invés disso, vamos usar uma implementação de herança para javascript desenvolvida por John Resig, criador do jQuery.
+        </p>
+        <p>
+            Na implementação de Resig, classes devem ser declaradas usando o método Class.extend(), o construtor chama o método init, que faz a inicialização do objeto. Chamadas a super classes podem ser feitas usando o método _super. Vamos dar uma olhada abaixo em como tudo isso funciona.
+        </p>
+        <pre class="prettyprint">
+            var Animal = Class.extend({
+    
+                init: function(nome){
+                  this._nome = nome;
+                },
+                correr: function() {
+                  console.debug(this._nome);
+                }
+            });
+
+            var Cachorro = Animal.extend({
+
+                correr: function() {
+                    this._super();
+                    console.debug("Corro com 4 patas");
+                }
+            });
+
+            var Passaro = Animal.extend({
+
+                correr: function() {
+                    this._super();
+                    console.debug("Eu não corro, eu tenho asas");
+                }
+            });
+
+            var animal = new Animal("Brett");
+            animal.correr();
+
+            var cachorro = new Cachorro("Fluky");
+            cachorro.correr();
+
+            var passaro = new Passaro("Birdie");
+            passaro.correr();
+        </pre>
+
+        <p>Animal define uma classe, que possui o atributo nome, assim como o método correr.</p>
+        <p>Cachorro e Passaro são subclasses de Animal, usam o mesmo construtor de Animal porém sobreescrevem o método de correr para adicionar a sua própria implementação que chama a implementação pai através do método _super.</p>
+
+        <p>Note que o atributo nome está declarado com underscore, _nome, isso é uma boa prática para mostrar que o atributo é privado e não deveria ser diretamente acessado.</p>
+    </div>
+</div>   

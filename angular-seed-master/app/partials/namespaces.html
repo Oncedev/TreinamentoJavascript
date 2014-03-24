@@ -1,0 +1,42 @@
+<h1 class="section-title">Namespaces</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>A medida que as aplicações crescem e são adicionados mais arquivos js da nossa própria aplicação,mais plugins de terceiros e todos esses objetos passam a conviver no objeto global, torna-se necessário organizar essa bagunça afim de evitar que conflitos de nomes entre os nossos arquivos e os arquivos de outros desenvolvedores apareçam e criem bugs difíceis de serem identificados.</p>
+
+        <p>Uma boa forma de organizar esses arquivos js é usando namespaces. O exemplo abaixo mostra como podemos utilizar namespaces para evitar esses conflitos.</p>
+
+        <pre class="prettyprint">
+            var OnceDev = OnceDev || {};
+            var OnceDev.Modelos = OnceDev.Modelos || {};
+            var OnceDev.Modelos.Aluno = Class.extend({
+                init: function(nome, idade) {
+                    this.nome = nome;
+                    this.idade = idade;
+                }
+            });
+        </pre>        
+
+        <p>Repetir esse código para criação do namespace pode ficar entediante ao longo do tempo, para isso podemos criar um função helper para fazer essa criação.</p>
+
+        <pre class="prettyprint">
+            function criarNamespace(namespace) {
+                var arrayNamespaces = [window];
+                var namespaces = namespace.split('.');
+                arrayNamespaces = arrayNamespaces.concat(namespaces);
+
+                arrayNamespaces.reduce(function(x,y) {
+                    x[y] = x[y] || {};
+                    return x[y];
+                });
+            }
+
+            criarNamespace("OnceDev.Modelos.Aluno");
+            OnceDev.Modelos.Aluno = Class.extend({
+                init: function(nome, idade) {
+                    this.nome = nome;
+                    this.idade = idade;
+                }
+            });
+        </pre>
+    </div>
+</div>

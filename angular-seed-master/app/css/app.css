@@ -104,6 +104,11 @@ a.logo-anchor:link, a.logo-anchor:visited {
   font-weight: bold;
 }
 
+.content-left .subsection-title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
 .sections {
   list-style: none;
   padding: 0px;
@@ -136,7 +141,10 @@ h1, h2 {
   text-align: center;
 }
 
-.section-content .subsection p, .section-content .subsection ul, .section-content .subsection pre {
+.section-content .subsection p, 
+.section-content .subsection ul, 
+.section-content .subsection pre, 
+.section-content .subsection h2 {
   text-align: left;
 }
 

@@ -1,0 +1,207 @@
+<h1 class="section-title">Arrays</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>Arrays são objetos utilizados para armazenar coleções.</p>
+        <p>
+            Um array no Javascript pode ser declarado de duas formas diferentes.        
+        </p>
+
+        <p>Usando literais.</p>
+
+        <pre class="prettyprint">
+            var array = []; // Array vazio
+            var array = [1,2,3]; // Criando um array já preenchido
+        </pre>
+    </div>    
+    <div class="subsection">
+        <p>Ou usando o prefixo new.</p>
+
+        <pre class="prettyprint">
+            var array = new Array();
+            var array = new Array(1,2,3);
+        </pre>
+    </div>
+    <div class="subsection">
+        <p>Posições do array são acessadas através da sintaxe [posição].</p>
+
+        <pre class="prettyprint">
+            var array = [1,2,3];
+    
+            array[0] = 5; // => [5,3,3]
+            var pos = array[2]; // => 3
+        </pre>
+    </div>    
+
+    <div class="subsection">
+        <p>Alguns métodos já são implementados por default no array. Abaixo segue uma lista de métodos interessantes.</p>
+
+        <p>O método join é usado para concatenar todos os itens do array usando um separador pré-definido.</p>
+        <pre class="prettyprint">
+            var arrayJoin = [1,2,3];
+            arrayJoin.join(); // => "1,2,3"
+            arrayJoin.join("|"); // => "1|2|3"
+            arrayJoin.join("-"); // => "1-2-3"
+        </pre>
+    </div>    
+
+    <div class="subsection">
+        <p>O método reverse é usado inverter a ordenação de um array.</p>
+        <pre class="prettyprint">
+            var arrayReverse = [1,2,3];
+            arrayReverse.reverse();
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>O método sort é usado para ordenar um array, pode ser usado tanto com a ordenação natural para os elementos do array, como também usando funções customizadas.</p>
+        <pre class="prettyprint">
+            var arraySort = [33, 4, 1111, 222];
+            arraySort.sort(); // => [1111, 222, 33, 4]
+            arraySort.sort(function(a,b){return a-b;}); // => [4, 33, 222, 1111]
+            arraySort.sort(function(a,b){return b-a;}); // => [1111, 222, 33, 4]
+        </pre>
+    </div>    
+
+    <div class="subsection">
+        <p>O método concat é usado para gerar um novo array concatenado com os novos elementos.</p>
+        <pre class="prettyprint">
+            var arrayConcat = [1,2,3];
+            arrayConcat.concat([4,5]);
+        </pre>
+    </div>    
+
+    <div class="subsection">
+        <p>O método slice, como o próprio nome diz, é usado para extrair um corte do array original.</p>
+        <pre class="prettyprint">
+            var arraySlice = [1,2,3,4,5];
+
+            arraySlice.slice(0,3); // => [1, 2, 3]
+            arraySlice.slice(3); // => [4, 5]
+            arraySlice.slice(1,-1); // => [2, 3, 4]
+            arraySlice.slice(-3,-2); // => [3]
+        </pre>
+    </div>        
+
+    <div class="subsection">
+        <p>Diferente do método slice e do concat que geram um novo vetor do derivado do array original, o splice extrai um pedaço ou subarray do vetor original, porém modificando o vetor</p>
+        <pre class="prettyprint">
+            var arraySplice = [1,2,3,4,5,6,7,8];
+
+            arraySplice.splice(4); // => [5, 6, 7, 8]
+            arraySplice.splice(1,2); // => [2, 3]
+            arraySplice.splice(1,1); // => [4]
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>Os métodos push e pop permitem que trabalhemos com arrays como se fossem pilhas, empilhando e desempilhando elementos.
+        </p>
+        <pre class="prettyprint">
+            var stack = []; 
+
+            stack.push(1,2); // => [1, 2]
+            stack.pop(); // => [2]
+            stack.push(3); [1, 3]
+            stack.pop(); [3]
+            stack.push([4,5]); [1, [4, 5]]
+            stack.pop(); [4, 5]
+            stack.pop(); [1]
+        </pre>
+    </div>        
+
+    <div class="subsection">
+        <p>O ECMAScript5 definiu 9 novos métodos para os arrays.
+        </p>
+
+        <p>O método forEach recebe uma função como parâmetro e executa essa função para todos os elementos do array. Por exemplo, podemos usar esse método para somar todos os elementos do array.</p>
+        <pre class="prettyprint">
+            var array = [1, 2, 3, 4, 5];
+            var soma = 0;
+            array.forEach(function(x) {soma += x});
+
+            soma // => 15
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>O método map recebe uma função e retorna um novo array onde cada elemento é o resultado da aplicação da função passada por parâmetro. Por exemplo, podemos usar esse método para duplicar todos os elementos de um array.
+        </p>
+        <pre class="prettyprint">
+            var array = [1, 2, 3, 4, 5];
+            array.map(function(x) {return x * 2}); // => [2, 4, 6, 8, 10]
+        </pre>
+    </div>        
+
+    <div class="subsection">
+        <p>O método filter recebe uma função e retorna todos os elementos do array que atendem uma determinada condição.
+        </p>
+        <pre class="prettyprint">
+            var array = [1, 2, 3, 4, 5];
+            array.filter(function(x) {return x > 2}); // => [3, 4, 5]
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>O método every recebe uma função e retorna true se a função retorna true para todos os elementos do array, do contrário, retorna false.
+        </p>
+        <pre class="prettyprint">
+            var arraySortidos = [1, 2, 3, 4, 5];
+            var arrayPares = [2, 4, 6, 8, 10];
+            var isPar = function(x) {return x%2 == 0};
+
+            arraySortidos.every(isPar); // => false
+            arrayPares.every(isPar); // => true
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>O método some recebe uma função e retorna true se a função retorna true para pelo menos um elemento do array, do contrário, retorna false.
+        </p>
+        <pre class="prettyprint">
+            var arraySortidos = [1, 2, 3, 4, 5];
+            var arrayPares = [2, 4, 6, 8, 10];
+            var isImpar = function(x) {return x%2 == 1};
+ 
+            arraySortidos.some(isImpar); // => true
+            arrayPares.some(isImpar); // => false
+        </pre>
+    </div>        
+
+    <div class="subsection">
+        <p>O método indexOf faz a busca de um elemento no array, retornando o índice do primeiro elemento encontrado que satisfaz a condição.
+        </p>
+        <pre class="prettyprint">
+            var array = [0, 1, 0, 1, 0];
+            array.indexOf(1); // => 1
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>O método lastIndexOf faz a busca de um elemento no array, retornando o índice do último elemento encontrado que satisfaz a condição.
+        </p>
+        <pre class="prettyprint">
+            var array = [0, 1, 0, 1, 0];
+            array.lastIndexOf(1); // => 3
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>O método lastIndexOf faz a busca de um elemento no array, retornando o índice do último elemento encontrado que satisfaz a condição.
+        </p>
+        <pre class="prettyprint">
+            var array = [0, 1, 0, 1, 0];
+            array.lastIndexOf(1); // => 3
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <p>O método reduce combina o resultado de dois elementos do array, retornando o resultado dessa operação para que seja combinado com os próximos elementos do array e assim seguidamente até que resulte em apenas um valor. O método reduceRight é usado da mesma forma que o reduce, a diferença é que no reduceRight as combinações iniciam no final do array e seguem até o seu início.
+        </p>
+        <pre class="prettyprint">
+            var array = [1,2,3,4,5]
+            var soma = array.reduce(function(x,y) { return x+y }); // 15: Soma dos valores
+            var produto = array.reduce(function(x,y) { return x*y }); // 120: Multiplicação dos elementos
+            var maior = array.reduce(function(x,y) { return (x>y)?x:y; }); // 5: Maior valor
+        </pre>
+    </div>        
+</div>   

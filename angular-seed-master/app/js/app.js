@@ -31,6 +31,14 @@ config(['$routeProvider', function($routeProvider) {
     {templateUrl: 'partials/igualdade-diferenca.html', controller: 'MyCtrl1'});
   $routeProvider.when('/objetos', 
     {templateUrl: 'partials/objetos.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/arrays', 
+    {templateUrl: 'partials/arrays.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/funcoes', 
+    {templateUrl: 'partials/funcoes.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/classes', 
+    {templateUrl: 'partials/classes.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/namespaces', 
+    {templateUrl: 'partials/namespaces.html', controller: 'MyCtrl1'});
   
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
