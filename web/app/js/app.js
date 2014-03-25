@@ -51,6 +51,12 @@ config(['$routeProvider', function($routeProvider) {
     {templateUrl: 'partials/manipulando-dom.html', controller: 'MyCtrl1'});
   $routeProvider.when('/eventos', 
     {templateUrl: 'partials/eventos.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/por-que-usar-templates', 
+    {templateUrl: 'partials/por-que-usar-templates.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/mustache-js', 
+    {templateUrl: 'partials/mustache-js.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/page-objects', 
+    {templateUrl: 'partials/page-objects.html', controller: 'MyCtrl1'});
   
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/historia'});
 }]);
