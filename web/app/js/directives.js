@@ -13,7 +13,7 @@ angular.module('myApp.directives', []).
     return {
         restrict: 'C',
         link: function postLink(scope, element, attrs) {
-              prettyPrint();
+              element[0].innerHTML = prettyPrintOne(element[0].innerHTML);
         }
     };
   })
@@ -21,11 +21,10 @@ angular.module('myApp.directives', []).
     return {
         restrict: 'C',
         link: function postLink(scope, element, attrs) {
-              element[0].innerHTML = element[0].innerHTML
+              element[0].innerHTML = prettyPrintOne(element[0].innerHTML
                                     .replace(/>/g,'&gt;')
                                     .replace(/</g,'&lt;').  
-                                    replace(/"/g,'&quot;'); 
-              prettyPrint();
+                                    replace(/"/g,'&quot;'));               
         }
     };
   });
