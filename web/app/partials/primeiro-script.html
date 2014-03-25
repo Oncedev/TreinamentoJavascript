@@ -8,7 +8,84 @@
     </div>
     <div class="subsection">
         <h2 class="subsection-title">Entendendo o DOM</h2>
-        <p>Antes de escrevermos o nosso primeiro script jQuery é necessário entender o que é e para que server o DOM.  </p>        
+        <p>Antes de escrevermos o nosso primeiro script jQuery é necessário entender o que é e para que serve o DOM (Document Object Model).</p>
+        <p>
+            O DOM é uma API para representação e manipulação de conteúdo de documentos HTML e XML. O DOM é representado como uma árvore hierárquica de elementos HTML, onde cada um desses elementos (por exemplo, div ou p) possuem um nó pai, o nó em que ele está contido, um ou mais nós filhos, nós que estão dentro do elemento e nós irmãos que são nós que estão no mesmo nível hierárquico. Cada um desses nós também podem ter um id, que é o seu identificador naquele documento e deve ser único e uma class que representa a classe de objetos a qual ele pertence.
+        </p>
+
+        <img src="http://www.w3schools.com/js/pic_htmltree.gif" />        
+
+        <p>O DOM da figura acima é a representação do HTML abaixo.</p>
+
+        <pre class="prettyprint">            
+            <html>
+            <head>
+                <title>My Title</title>
+            </head>
+            <body>
+                <a href="">My Link</a>
+                <h1>My Header</h1>
+            </body>
+            </html>
+        </pre>
     </div>
 
+    <div class="subsection">
+        <h2 class="subsection-title">Adicionando o jQuery ao projeto</h2>
+        <p>
+            O jQuery pode ser baixado através do site do jQuery ou usado a partir de algum CDN como o Google CDN e o Microsoft CDN.
+        </p>
+        <p>
+            Deve se ficar atento a versão do jQuery que iremos utilizar, as versões mais novas (2.x) não oferecem mais suporte para as versões 6, 7 e 8 do Internet Explorer, se sua aplicação deve manter compatibilidade com esses browsers, a melhor versão a ser utilizada é a 1.x, que atualmente está na versão 1.11.
+        </p>        
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Scripts no final da página</h2>
+        <p>
+            Uma boa prática é colocar as declarações de scripts ao final da tag body. A justificativa para isso é que durante o processo de renderização, todo o conteúdo após a tag script permanece bloqueado até que o script seja carregado, isso dá a impressão de que a página demora mais para ser carregada. 
+        </p>
+        <p> 
+            A outra justificativa é que scripts impedem que o browser faça download paralelo dos assets da página(imagens, folhas de estilo e por aí vai). A especificação do HTTP/1.1 sugere que browsers não devem fazer o download de mais de 2 componentes pertencentes a um mesmo hostname em paralelo, se espalharmos todas as nossas imagens em vários hostnames nós conseguimos fazer o download de mais de 2 imagens em paralelo, no entanto, quando um script está sendo carregado o browser não consegue fazer nenhum outro download mesmo usando outros hostnames.
+        </p>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Esperando a página carregar</h2>
+        <p>
+            Antes de usarmos o jQuery para interagir com o DOM é necessário esperar que o DOM esteja completamente carregado, caso contrário, podemos executar comandos em cima de elmentos HTML que ainda nem existem.
+        </p>
+        <p>
+            Felizmente, o jQuery tem um comando que espera todo o carregamento da página antes de começar a execução do script. Esse é, provavelmente, o comando mais utilizado do jQuery, espere encontra-lo diversas vezes nas suas aplicações jQuery, já que quase todo os comandos jQuery só devem ser executados após o carregamento completo do DOM.
+        </p>
+        <pre class="prettyprint">
+            $(document).ready(function() {
+              alert('Página pronta');
+
+              // Outros comandos do jQuery
+            });
+        </pre>
+        <p>
+            O comando acima é tão utilizado que o pessoal do jQuery resolveu fornecer um atalho para ele. O uso do atalho ou sua versão original é uma decisão do time de desenvolvimento, ambos fazem as mesmas coisas.
+        </p>
+        <pre class="prettyprint">
+            $(function() {
+              alert('Página pronta');
+
+              // Outros comandos do jQuery
+            });
+        </pre>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Executando o primeiro comando</h2>
+        <pre class="prettyprint">
+            $(document).ready(function() {
+                $("body").css('background-color',"black");
+            });
+        </pre>
+        <p>
+            O comando acima altera a cor de fundo da tag body após a página ser completamente carregada.
+        </p>
+        <p>
+            Os comandos jQuery são formados por 3 partes. Começam com a variavel $, que é um atalho para variável jQuery, seguida de uma string entre parâmetros ("body"), que representa os seletores, ou seja, as regras que irão ser utilizadas para achar os elementos na página. E por último, um método, css, seguido de seus possíveis parâmetros. Nesse caso, o método css, serve para alterarmos os atributos de css para o elemento selecionado.
+        </p>
+    </div>
 </div>

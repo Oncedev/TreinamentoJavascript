@@ -12,7 +12,7 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/historia', {templateUrl: 'partials/historia.html', controller: 'MyCtrl1'});
   $routeProvider.when('/por-que-o-javascript-esta-sendo-tao-usado', 
-  	{templateUrl: 'partials/por-que-o-javascript-esta-sendo-tao-usado.html', controller: 'MyCtrl2'});
+  	{templateUrl: 'partials/por-que-o-javascript-esta-sendo-tao-usado.html', controller: 'MyCtrl1'});
   $routeProvider.when('/estrutura-lexica', 
   	{templateUrl: 'partials/estrutura-lexica.html', controller: 'MyCtrl1'});
   $routeProvider.when('/tipos', 
@@ -42,7 +42,7 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/motivos-para-usar', 
     {templateUrl: 'partials/motivos-para-usar.html', controller: 'MyCtrl1'});
   $routeProvider.when('/primeiro-script', 
-    {templateUrl: 'partials/primeiro-script.html', controller: 'MyCtrl1'});
+    {templateUrl: 'partials/primeiro-script.html', controller: 'MyCtrl2'});
   
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
