@@ -1,0 +1,84 @@
+<h1 class="section-title">Manipulando o DOM</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>
+            Uma outra feature importante do jQuery é facilitar a manipulação do DOM, a medida que as aplicações ficam cada vez mais responsivas e interativas é necessário que seja adicionado, alterado ou removido elementos do DOM de acordo com as ações do usuário.
+        </p>
+
+        <p>
+            O jQuery oferece alguns métodos em sua API padrão para fazer a manipulação de elementos do DOM.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Método</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>append</td>
+                    <td>Insere o conteúdo ao final do elemento</td>
+                </tr>
+                <tr>
+                    <td>prepend</td>
+                    <td>Insere o conteúdo no ínicio do elemento</td>
+                </tr>
+                <tr>
+                    <td>after</td>
+                    <td>Insere o conteúdo antes do elemento</td>
+                </tr>
+                <tr>
+                    <td>before</td>
+                    <td>Insere o conteúdo depois do elemento</td>
+                </tr>
+                <tr>
+                    <td>empty</td>
+                    <td>Deleta o contéudo do elemento</td>
+                </tr>
+                <tr>
+                    <td>remove</td>
+                    <td>Deleta o elemento</td>
+                </tr>
+                <tr>
+                    <td>hide</td>
+                    <td>Esconde o elemento</td>
+                </tr>
+                <tr>
+                    <td>show</td>
+                    <td>Mostra o elemento</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Abaixo segue alguns exemplos da utilização desses métodos.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <div id="div1">
+                Minha div1
+            </div>
+            <div id="div2">
+                Minha div2
+            </div>
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function () {
+                $("div").append("<p>Separando Divs</p>");
+                // Adiciona paragrafos ao final de cada div
+
+                $("div").prepend("<p>Adicionado paragrafo no inicio de cada div</p>");
+                // Adiciona paragrafos no inicio de cada div
+
+                $("div").empty();
+                // Limpa o conteúdo de todas as divs
+
+                $("#div1").remove();
+                // Exclui a div1
+            }); 
+        </pre>
+    </div>
+</div>    

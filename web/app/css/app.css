@@ -154,3 +154,12 @@ h1, h2, h3 {
   text-align: left;
 }
 
+.content table {
+  width: 100%;
+  border: 1px solid #4f5e67;
+}
+
+.content table thead {
+  color: #4f5e67;
+}
+
