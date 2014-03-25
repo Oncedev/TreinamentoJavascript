@@ -1,0 +1,157 @@
+<h1 class="section-title">Seletores CSS</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>
+            O uso de seletores CSS para fazer consultas ao DOM é umas das coisas mais legais no jQuery, em alguns casos, seu uso poupa o desenvolvedor de escrever dezenas de código javascript puro para atingir o mesmo resultado.
+        </p>
+        <p>
+            Os seletores CSS podem ser de 4 maneiras diferentes. Podemos consultar um elemento pelo seu id, por sua classe, por sua tag ou por algum atributo do elemento, ou se quisermos algo mais específico, também podemos combinar esses 4 tipos de seletores para formar novos seletores.
+        </p>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Consultando elementos pelo id</h2>
+
+        <p>Podemos consultar elementos no DOM pelo id através do uso do carácter '#' + o id do elemento. Confira o exemplo abaixo.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <div id="div1">
+                Minha div1
+            </div>
+            <div id="div2">
+                Minha div2
+            </div>
+        </pre>
+
+        <p>
+            No DOM acima, temos duas divs cada uma com seus respectivos id, agora vamos usar o jQuery para extrair o conteúdo interno de cada uma delas.
+        </p>
+
+        <pre class="prettyprint">
+            $(document).ready(function () {
+                $("#div1").html(); // => Minha div1
+                $("#div2").html(); // => Minha div2
+            });
+        </pre>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Consultando elementos pela classe</h2>
+        <p>
+            Uma outra forma de consultar elementos é pela classe. Para executar consultas no DOM pela classe dos elementos usando o caracter '.' + a classe que queremos buscar. Confira o exemplo abaixo. 
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <div class="timeBasquete">
+                LA Lakers
+            </div>
+            <div class="timeBasquete">
+                Miami Heat
+            </div>
+            <div class="timeFutebol">
+                Barcelona
+            </div>
+            <div class="timeFutebolAmericano">
+                New England Patriots
+            </div>    
+        </pre>
+
+        <p>Para pegar apenas os times de basquete, podemos usar o comando abaixo.</p>
+
+        <pre class="prettyprint">
+            $(document).ready(function () {
+                $(".timeBasquete").each(function() {
+                    console.debug($(this).html());    
+                })
+            });   
+        </pre>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Consultando elementos pela tag</h2>
+        <p>
+            Podemos também consultar os elementos pelas tags html.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <div>
+                Div1
+            </div>
+            <div>
+                Div2
+            </div>
+            <p>
+                P1
+            </p>
+            <p>
+                P2
+            </p>    
+        </pre>
+
+        <p>Podemos pegar apenas o conteúdo dos parágrafos</p>
+
+        <pre class="prettyprint">
+            $(document).ready(function () {
+                $("p").each(function() {
+                    console.debug($(this).html());    
+                })
+            });   
+        </pre>
+    </p>
+    <div class="subsection">
+        <h2 class="subsection-title">Consultando elementos por atributos</h2>
+        <p>
+            Podemos também consultar os elementos pelos atributos.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <input type="text" value='Paulo' />
+            <input type="hidden" value='Pedro' />
+            <input type="text" value='Vladson'/>
+        </pre>
+
+        <p>Podemos pegar apenas o conteúdo dos campos de texto da seguinte forma.</p>
+
+        <pre class="prettyprint">
+            $(document).ready(function () {
+                $("input[type='text']").each(function() {
+                    console.debug($(this).val());    
+                })
+            });   
+        </pre>
+    </p>
+    <div class="subsection">
+        <h2 class="subsection-title">Combinando seletores</h2>
+        <p>Por fim, seletores também podem ser combinados para gerar consultas.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <table id="tabela">
+                <tbody>
+                    <tr class="impar">
+                        <td>1</td>
+                    </tr>
+                    <tr class="par">
+                        <td>2</td>
+                    </tr>
+                    <tr class="impar">
+                        <td>3</td>
+                    </tr>
+                    <tr class="par">
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </pre>
+
+        <p>O código abaixo usa seletores de tags, ids e classes para pintar os número impares de verde e os números pares de azul.</p>
+
+        <pre class="prettyprint">
+            $(document).ready(function () {
+                $("table#tabela tr.impar").each(function() {
+                    $(this).css('color', 'green');            
+                });
+                
+                $("table#tabela tr.par").each(function() {
+                    $(this).css('color', 'blue');            
+                });
+            });
+        </pre>
+    </div>
+</div>

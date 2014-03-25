@@ -1,0 +1,63 @@
+<h1 class="section-title">Filtros</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>Seletores também podem ser combinados com filtros na hora de consultar elementos no DOM.</p>
+
+        <p>
+            Alguns exemplos de filtros que podem ser utilizados são:
+        </p>
+
+        <p>
+            O filtro :eq(n), é utilizado para obter o elemento cujo índice é n.
+        </p>
+
+        <p>
+            O filtro :even e :odd são utilizados para pegar apenas os elementos de índice par e ímpar respectivamente. Os índices começam com zero. 
+        </p>
+
+        <p>
+            O filtro :not é utilizado para pegar os elementos apenas os elementos que não atendem a um determinado seletor.
+        </p>
+
+        <p>Vamos testar alguns desses filtros abaixo.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>    
+        </pre>
+
+        <pre class="prettyprint">
+            $(document).ready(function() {
+                $("table tr:even td").each(function() {
+                    $(this).css('color', 'blue');
+                }); // Pinta a primeira e a terceira linha de azul
+
+                $("table tr:odd td").each(function() {
+                    $(this).css('color', 'blue');
+                }); // Pinta a segunda e a quarta linha de azul
+
+                $("table tr:not(:odd) td").each(function() {
+                    $(this).css('color', 'blue');
+                }); // Pinta a primeira e a terceira linha de azul
+
+                $("table tr:eq(2) td").each(function() {
+                    $(this).css('color', 'blue');
+                }); // Pinta a terceira linha de azul
+            });
+        </pre>
+    </div>
+</div>
