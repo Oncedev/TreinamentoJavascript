@@ -45,6 +45,8 @@ config(['$routeProvider', function($routeProvider) {
     {templateUrl: 'partials/primeiro-script.html', controller: 'MyCtrl2'});
   $routeProvider.when('/seletores-css', 
     {templateUrl: 'partials/seletores-css.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/filtros', 
+    {templateUrl: 'partials/filtros.html', controller: 'MyCtrl1'});
   
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
