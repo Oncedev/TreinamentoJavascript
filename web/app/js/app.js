@@ -43,6 +43,8 @@ config(['$routeProvider', function($routeProvider) {
     {templateUrl: 'partials/motivos-para-usar.html', controller: 'MyCtrl1'});
   $routeProvider.when('/primeiro-script', 
     {templateUrl: 'partials/primeiro-script.html', controller: 'MyCtrl2'});
+  $routeProvider.when('/seletores-css', 
+    {templateUrl: 'partials/seletores-css.html', controller: 'MyCtrl1'});
   
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
