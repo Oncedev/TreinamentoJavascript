@@ -39,6 +39,10 @@ config(['$routeProvider', function($routeProvider) {
     {templateUrl: 'partials/classes.html', controller: 'MyCtrl1'});
   $routeProvider.when('/namespaces', 
     {templateUrl: 'partials/namespaces.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/motivos-para-usar', 
+    {templateUrl: 'partials/motivos-para-usar.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/primeiro-script', 
+    {templateUrl: 'partials/primeiro-script.html', controller: 'MyCtrl1'});
   
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);

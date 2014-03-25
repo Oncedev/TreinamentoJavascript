@@ -99,6 +99,12 @@ a.logo-anchor:link, a.logo-anchor:visited {
   font-size: 1.2em;
 }
 
+.sidebar .subsection-title {
+  padding-left: 15px;
+  color: #4D4D4D;
+  font-size: 1.4em; 
+}
+
 .content-left .section-title {
   font-size: 2.5em;
   font-weight: bold;
@@ -114,7 +120,7 @@ a.logo-anchor:link, a.logo-anchor:visited {
   padding: 0px;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: LeagueGothic,"Arial Narrow",sans-serif;
   font-weight: 400;
   margin: 0 0 1em;
