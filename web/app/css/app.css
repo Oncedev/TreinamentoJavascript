@@ -11,7 +11,7 @@ body, header {
 }
 
 .header {
-  background: #5d7787 url(../img/bg-header.png);
+  background: #323B44;
   min-height: 138px;
   min-width: 1100px;
   color: #fff;
@@ -23,8 +23,22 @@ body, header {
   text-align: center;
 }
 
+.logo {
+  float: left;
+  padding: 20px 0 0;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -moz-transition: -moz-transform .7s linear;
+  -webkit-transition: -webkit-transform .7s linear;
+  -o-transition: -o-transform .7s linear;
+  transition: transform .7s linear;
+}
+
 .site-title {
-  width: 500px;
+  width: 700px;
   letter-spacing: .035em;
   font-family: LeagueGothic,"Arial Narrow",sans-serif;
   font-size: 2em;
@@ -35,7 +49,7 @@ body, header {
 }
 
 .site-subtitle {
-  width: 500px;
+  width: 700px;
   padding-top: 4px;
   letter-spacing: .035em;
   font-family: LeagueGothic,"Arial Narrow",sans-serif;
