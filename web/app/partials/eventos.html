@@ -1,6 +1,171 @@
 <h1 class="section-title">Eventos</h1>
 <div class="section-content">
     <div class="subsection">
-    <p></p>
+        <p>
+            Podemos programar javascript usando desenvolvimento guiado a eventos, e essa é a forma em que normalmente ele é aplicado. O desenvolvimento web, por exemplo, que é onde há o maior uso do javascript, nós costumamos escrever eventos para os nossos controles HTML que vão ser disparados a medida que os usuários navegam na página.
+        </p>
+        <p>
+            Eventos no javascript podem ser declarados no html, usando javascript puro ou usando as abstrações do jQuery. Como essa seção trata de jQuery, irei focar em como atribuir eventos aos elementos usando apenas o jQuery.
+        </p>
+        <p>
+            Eventos suportados pelo jQuery e consequentemente pelo javascript podem ser divididos em 5 categorias.
+        </p>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Eventos de formulário</h2>
+        <p>
+            Os elementos formulários, representados pela tag form, possuem 2 eventos, o evento submit que é quando o formulário é submetido e o evento reset que é disparado quando o formulário é resetado.
+        </p>
+        <p>
+            O código abaixo é usado para atribuir ambos os eventos, o jQuery apresenta atalhos para a definição de alguns métodos, o método submit é um deles. Para o método reset não existe atalhos, sendo necessário a atribuição do método através da método bind.
+        </p>
+
+        <pre class="prettyprint">
+            $(document).ready(function() {
+                $("form").submit(function() {
+                    alert("submit");
+                });
+                
+                $('form').bind('reset',function(){
+                    alert("reset");
+                });
+            });
+        </pre>
+
+        <p>Para ver o código acima funcionando clique <a href="http://jsfiddle.net/pauloortins/fGT6S/">aqui</a>.</p>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Eventos de elementos de formulário</h2>
+        <p>Elementos como textbox, select, radio button e etc também possuem seus eventos. Esse eventos estão normalmente associados a alteração de valor, ou a interações com os elementos.</p>
+
+        <p>
+            O evento change é disparado quando um determinado elemento tem o seu valor alterado.
+        </p>
+        <p>
+            Os eventos focus e blur são disparados quando um elemento ganha ou perde o foco respectivamente.
+        </p>
+
+        <p>O código abaixo mostra como podemos atribuir esses eventos.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                $("input").focus(function() {
+                    $("form").append("<p>Focus</p>");
+                });
+                
+                $("input").blur(function() {
+                    $("form").append("<p>Blur</p>");
+                });
+                
+                $("select").change(function() {
+                    $("form").append("<p>Change</p>");
+                });
+            });
+        </pre>
+
+        <p>Para ver o código acima funcionando clique <a href="http://jsfiddle.net/pauloortins/sgEfj/">aqui</a>.</p>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Eventos associados a janela do browser</h2>
+
+        <p>Além dos eventos focus e blur que também podem ser associados a janela do browser, outro evento pode ser associado a janela do browser que é o evento resize.
+        </p>
+        <p>
+            O evento resize como o próprio nome diz, é disparado quando a página é redimensionada.
+        </p>
+        <p>O código abaixo mostra a aplicação do resize.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                $( window ).resize(function() {
+                    $("div").append("resize");
+                });
+            });
+        </pre>
+
+        <p>Para ver o código acima funcionando clique <a href="http://jsfiddle.net/pauloortins/sgEfj/">aqui</a>.</p>        
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Eventos associados ao mouse</h2>
+        <p> Os eventos de mouse são normalmente disparados quando um usuário clica ou movimenta o mouse.</p>
+        <p>
+            O evento mousemove é disparado toda vez que o usuário movimenta o mouse na nossa página.
+        </p>
+        <p>
+            Os eventos mousedown e o mouseup são disparados quando o usuário respectivamente pressiona o botão do mouse e quando o usuário libera o botão do mouse, respectivamente.
+        </p>
+
+        <p>Os eventos mouseover e mouseout são utilizados, respectivamente, quando o usuário coloca o mouse sobre um elemento ou quando o usuário retira o cursor do mouse do elemento.</p>
+
+        <p>Por último, o evento click é disparado quando o usuário clica no mouse, enquanto o evento dblclick é disparado quando o usuário clica 2 vezes em um curto período de tempo.</p>
+
+        <p>Abaixo, segue o código que faz a atribuição desses 7 eventos.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                $(window).click(function() {
+                    $("div").append(" click ");
+                });
+                
+                $(window).dblclick(function() {
+                    $("div").append(" dblclick ");
+                });
+                
+                $(window).mousemove(function() {
+                    $("div").append(" mouse move ");
+                });
+                
+                $(window).mouseup(function() {
+                    $("div").append(" mouse up ");
+                });
+
+                $(window).mousedown(function() {
+                    $("div").append(" mouse down ");
+                });
+
+                $(window).mouseover(function() {
+                    $("div").append(" mouse over ");
+                });
+
+                $(window).mouseout(function() {
+                    $("div").append(" mouse out ");
+                });                        
+            });
+        </pre>
+
+        <p>Para ver o código acima funcionando clique <a href="http://jsfiddle.net/pauloortins/7GgKf/">aqui</a>.</p>   
+    </div>    
+    <div class="subsection">
+        <h2 class="subsection-title">Eventos associados ao teclado</h2>
+
+        <p>
+            Existem 3 eventos de teclado que podem ser executados pelo browser, o keydown, o keypress e o keydown.
+        </p>
+
+        <p>
+            O evento keydown e keyup são disparados quando o usuário, respectivamente, pressiona uma tecla do teclado e quando ele libera essa tecla. O evento keypress é liberado toda vez que um novo carácter é gerado pelo teclado, que acontece a cada vez que uma tecla é, ou permanece, pressionada.
+        </p>
+
+        <p>
+            O código abaixo mostra como podemos atribuir esses eventos.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                $(window).keyup(function() {
+                   $("div").append("key up"); 
+                });
+                
+                $(window).keydown(function() {
+                   $("div").append("key down"); 
+                });
+                
+                $(window).keypress(function() {
+                   $("div").append("key press"); 
+                });    
+            });
+        </pre>
+
+        <p>Para ver o código acima funcionando clique <a href="http://jsfiddle.net/pauloortins/z8UkZ/">aqui</a>.</p>
     </div>
 </div>
