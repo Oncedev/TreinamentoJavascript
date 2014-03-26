@@ -1,0 +1,184 @@
+<h1 class="section-title">Ajax</h1>
+<div class="section-content">
+    <div class="subsection">
+        <p>
+            AJAX, ou Asynchronous Javascript and XML, é a técnica de trafegar pequenos trechos de XML ou json entre o lado cliente e o lado servidor em uma aplicação web de forma assincrona e fazer com que a página que está sendo utilizada tenha que ser recarregada.
+        </p>
+        <p>
+            O AJAX pode ser utilizada para carregar informações do servidor, consumir uma API pública, submeter dados para o servidor em uma operação de inserção, edição ou deleção de registros e por aí vai.
+        </p>
+        <p>
+            O jQuery possui alguns helpers que nos ajudam a trabalhar com AJAX de forma mais fácil. Na minha visão, o jQuery não só nos fornece esses helpers, mas a facilidade com que ele faz isso foi uma dos principais fatores que contribuíram para aumentar a popularidade do ajax.
+        </p>
+        <p>
+            Os helpers fornecidos pelo jQuery são o load, o getJSON, o get, o post e o ajax.
+        </p>        
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">O método Load</h2>
+
+        <p>
+            O método load basicamente recebe uma string ou url e carrega o conteúdo da string no elemento especificado. Caso estejamos interessados em apenas uma parte do html, podemos especificar essa parte usando seletores.
+        </p>
+
+        <pre class="prettyprint">
+            // Carrega o gráfico de ações
+            $("#stocks_graph").load("stocks_graph.html");
+
+            // Carrega o gráfico de ações apenas da petrobras
+            $("#stocks_graph").load("stocks_graph.html #petr4");    
+
+            // Exemplo usando string
+            $("#stocks_graph").load("/Acoes/Grafico");            
+        </pre>
+
+        <p>
+            O método load, por default, execute um HTTP Get, no entanto é possível passar um objeto como data forçando o load a executar um HTTP Post. Além disso, o load também pode receber uma função de callback que será executada após o conteúdo ser carregado.
+        </p>
+
+        <p>
+            Veja exemplos.
+        </p>
+
+        <pre class="prettyprint">
+            // Exemplo usando função callback
+            $("#stocks_graph").load("stocks_graph.html", function() {
+                alert("Loaded");
+            });
+
+            // Exemplo usando post e função callback
+            $("#stocks_graph").load("/Acoes/Grafico", {acao: "petr4"}, function() {
+                alert("Loaded");
+            });            
+        </pre>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">
+            O método getJSON
+        </h2>
+
+        <p>
+            O método getJSON funciona de forma semelhante ao método load, pode ser passado uma url ou uma string (que vai ser concatenada a url atual). O getJSON por default executa um get, porém ele pode ser forçado a executar um post caso seja passado um objeto como parâmetro.
+        </p>
+        <p>
+            A diferença do getJSON para o método load, é que enquanto o métod load carrega o contéudo no elemento selecionado e método getJSON não é executado a partir de nenhum elemento e precisa de uma função de callback que irá ser responsável por definir o que vai ser feito com o dado carregado.
+        </p>
+
+        <pre class="prettyprint">
+
+            // Recuperando o json de uma url, o parâmetro data retorna os dados no formato json
+            // Supondo que o json seja {nome: "PETR4", preco: "34.30"}
+            $.getJSON("data.json", function(data) {
+                alert("A acao " + data.nome + " custa " + 34.30);
+            });
+
+            // Executando um post na url
+            $.getJSON("/Acoes/Grafico", {acao: "PETR4"}, function(data) {
+                alert("A acao " + data.nome + " custa " + 34.30);
+            });    
+        </pre>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">
+            Os métodos get e post
+        </h2>
+
+        <p>
+            Os métodos get e post fazem um request para a url ou string passada por parâmetro, passando dados, se necessário, e retornando os dados através de uma função de callback.
+        </p>    
+        <p>
+            Ambos os métodos possuem os mesmo parâmetros do método getJSON, eles recebem um a url ou string, seguidos de um objeto contendo dados, que é opcional e por último uma função de callback que irá ser executada após o request for encerrado.
+        </p>
+
+        <pre class="prettyprint">
+            // Requisita arquivo de texto do server e exibe em um alert
+            $.get("acoes.txt", alert);
+
+            
+            $.post("/usuario/new", {nome: "paulo", email: "paulo@gmail.com"}, function(data) {
+                alert(data);
+            });
+        </pre>    
+    </div>
+
+    <div class="subsection">
+        <h2 class="subsection-title">
+            O método Ajax
+        </h2>
+
+        <p>
+            OS métodos load, getJSON, get e post são atalhos para o método ajax, que é o método mais complicado da API e que possui inúmeras formas de configuração, onde podemos executar não só GETs ou POSTs mas também UPDATEs e DELETEs.
+        </p>
+        <p>
+            No método ajax aceita apenas um parametro, que é um objeto de configuração. Veja o exemplo abaixo.
+        </p>
+
+        <pre class="prettyprint">
+            jQuery.ajax({ 
+                type: "GET",
+                url: url,
+                data: null, 
+                dataType: "script", 
+                success: function(data) {}
+                });
+        </pre>
+
+        <p>
+            As configurações mais usadas são:
+        </p>
+
+        <p>
+            O atributo type é usado para indicar qual verbo HTTP (GET, POST, UPDATE ou DELETE) vai ser usado na requisição.
+        </p>
+        <p>
+            O parâmetro url é usado para indicar qual a url que vai ser requisitada.
+        </p>
+        <p>
+            O parâmetro data é usado para passar dados para o servidor.
+        </p>
+        <p>
+            O parâmetro dataType é usado para especificar qual o tipo de data é esperado na resposta e como esse dado vai ser tratato pelo jQuery.
+        </p>
+        <p>
+            O parâmetro contentType especifica o tipo de dado que vai ser enviado no request.
+        </p>
+        <p>
+            O parâmetro async é utilizado para especificar se o request deve ser executado de forma assíncrona(true) ou síncrona(false).
+        </p>
+
+        <pre class="prettyprint">
+            jQuery.ajax({ 
+                type: "GET",
+                url: "/Acoes/Grafico",
+                data: {acao = "petr4"}, 
+                dataType: "json", 
+                contentType: "application/json"
+            });
+        </pre>
+
+        <p>
+            Além disso as seguintes funções de callback podem ser especificadas:
+        </p>
+        <p>
+            A função beforeSend é executada antes do request ser enviado ao servidor. Se esse callback retorna false o request é abortado.
+        </p>
+        <p>
+            A função success é executada após o request retornar com status de sucesso.
+        </p>
+        <p>
+            A função error é executada após o request retornar com status de erro.
+        </p>
+        <p>
+            A função complete é executada após o request terminar e antes das funções success e error serem chamadas.
+        </p>
+
+        <pre class="prettyprint">
+            jQuery.ajax({ 
+                beforeSend: function() {},
+                success: function() {},
+                error: function() {}, 
+                complete: function() {}                 
+            });    
+        </pre>
+    </div>
+</div>    

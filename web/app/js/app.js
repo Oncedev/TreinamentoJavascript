@@ -51,6 +51,8 @@ config(['$routeProvider', function($routeProvider) {
     {templateUrl: 'partials/manipulando-dom.html', controller: 'MyCtrl1'});
   $routeProvider.when('/eventos', 
     {templateUrl: 'partials/eventos.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/ajax', 
+    {templateUrl: 'partials/ajax.html', controller: 'MyCtrl1'});
   $routeProvider.when('/por-que-usar-templates', 
     {templateUrl: 'partials/por-que-usar-templates.html', controller: 'MyCtrl1'});
   $routeProvider.when('/mustache-js', 
