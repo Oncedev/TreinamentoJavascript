@@ -1,5 +1,28 @@
 <h1 class="section-title">Page Objects</h1>
 <div class="section-content">
     <div class="subsection">
+        <p>
+            O crescimento do uso de javascript nas aplicações web criou uma novo ponto de atenção quando estamos criando as nossas aplicações web que é a arquitetura de javascript. Desenvolvedores javascripts, ou front-enders, devem estar preocupados em comos eles podem atingir o máximo de manutenibilidade, reuso nos seus códigos javascript. 
+        </p>
+        <p>
+            Nessa seção iremos discutir o conceito de page objects que é a forma como eu tenho organizado o meu javascript atualmente.
+        </p>        
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Tentativas passadas</h2>
+
+        <p>Ao longo dos últimos 3 anos em que estive envolvido com desenvolvimento de aplicações com forte uso de javascript, eu acabei tentando algumas formas de organizar o meu javascript que não se demonstraram boas.</p>
+
+        <p>A primeira delas, como sempre é, foi a falta total de organização, todos as funções javascript estavam concentradas em um único arquivo chamado scripts.js. Não é preciso dizer a confusão que era criada, conflitos de namespaces, pouco reaproveitamento de código, não havia separação em namespaces, dificuldade em ler o código já existente, ausência de testes unitários e a lista só foi aumentando.</p>
+
+        <p>
+            Na segunda tentativa, com um pouco mais de experiência, eu dividí o meu código em vários arquivos (um grande avanço!), onde cada arquivo representava uma tela do sistema, existiam também outros arquivos que possuiam funções que eram compartilhadas por várias telas do sistema, por exemplo, extensões do jQuery, formatações de campos, manipulação de mapas e por aí vai.
+        </p>
+        <p> Essa abordagem foi um pouco melhor, mas nas telas complexas, o tamanho do arquivo javascript ainda me incomodava e tornava o código difícil de ler, também não havia separação de namespaces, não havia testes unitários, enfim, ainda estava muito longe do ideal.
+        </p>
+
+        <p>
+            Após discutir com alguns outros desenvolvedores e olhar também o código produzido por frameworks MVC, cheguei na arquitetura que tenho usado hoje, que tem me agradado, porém, ainda deve ser em muito melhorada.
+        </p>
     </div>
 </div>    
