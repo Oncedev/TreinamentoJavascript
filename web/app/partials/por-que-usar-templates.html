@@ -1,5 +1,107 @@
 <h1 class="section-title">Por que usar templates ?</h1>
 <div class="section-content">
     <div class="subsection">
+        <p>Uma boa prática quando falamos em desenvolvimento web é a separação de responsabilidades.    Uma página web é formada por 3 componentes, o HTML, o CSS e o Javascript.
+        </p>
+        <p>
+            O HTML tem a responsabilidade de definir a estrutura dos elementos.
+        </p>
+        <p>
+            O CSS tem a responsabilidade de definir a aparência dos elementos.
+        </p>
+        <p>
+            E o Javascript, por sua vez, tem a responsabilidade de definir os comportamentos dos elementos.
+        </p>
+
+        <p>
+            Agora observe o que acontece no exemplo abaixo, simples, mas que consegue demonstrar a raiz do problema. A estrutura na qual a lista de erros vai ser exibida está sendo definida no Javascript, caso, decidissemos alterar a forma de exibição para uma lista de itens (ul e li), por exemplo, teríamos que fazer uma alteração no nosso javascript. Mas espere ! Dessa forma estamos ampliando a responsabilidade que deveria ser dada ao javascript que é somente a definição de comportamentos.
+        </p>
+        <p>
+            Uma outra razão, é que alterar html em um arquivo .js não é coisa mais fácil no mundo, vai existir pouco suporte ferramental, como por exemplo sintaxe colorida e autocomplete. 
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <form>
+                <div id="msgs">                    
+                </div>
+
+                Nome: <input type="text"/>
+                Email: <input type="text" />
+                
+                <input type="reset" />
+                <input type="submit" />
+            </form>
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function () {
+                $("form").submit(function(event) {
+                    event.preventDefault();
+                    
+                    $("div#msgs").empty();
+                    
+                    var listaErros = [
+                        "O campo nome é obrigatório",
+                        "O campo email é obrigatório",
+                        ];
+                    
+                    for (var i = 0; i < listaErros.length; i++) {
+                        $("div#msgs").append("<p>" + listaErros[i] + "</p>");
+                    }
+                });
+            });
+        </pre>        
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Resolvendo o problema usando templates</h2>
+
+        <p>Uma forma de resolver o problema mencionado é usando templates.</p>
+        <p>Existem algumas alternativas de templates como o Handlebars, o Mustache e o Jade.</p>
+
+        <p>O exemplo abaixo usa o Mustache para resolver o problema, não é necessário perder muito tempo tentanto entender o funcionamento, existe uma seção inteira sobre o Mustache.</p>
+
+        <p>Dessa forma, a estrutura das mensagens se encontra no código HTML e não no código javascript, além de poder ser compartilhada para outras mensagens de erros.</p>
+
+        <p>O código sendo executado pode ser conferido <a href="http://jsfiddle.net/pauloortins/jRm3L/1/">aqui</a>.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <form>
+                <div id="msgs">
+                    
+                </div>
+                Nome: <input type="text"/>
+                Email: <input type="text" />
+                
+                <input type="reset" />
+                <input type="submit" />
+            </form>
+
+            <script id="tplErros" type="text/template">
+                {{#.}}
+                    <p>
+                        {{.}}
+                    </p>
+                {{/.}}
+            </script>
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function () {
+                $("form").submit(function(event) {
+                    event.preventDefault();
+                    
+                    $("div#msgs").empty();
+                    
+                    var listaErros = [
+                        "O campo nome é obrigatório",
+                        "O campo email é obrigatório",
+                        ];
+                    
+                    var template = $("#tplErros").html();
+                    var html = Mustache.render(template, listaErros);
+                    $("div#msgs").append(html);
+                });
+            });
+        </pre>
     </div>
 </div>    
