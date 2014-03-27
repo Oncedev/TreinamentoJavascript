@@ -44,5 +44,51 @@
         </p>
 
         <img src="img/imgTela.png" height="300" width="600" />
+
+        <p>
+            Ao desenvolver a página acima eu costumo quebrar a página em pequenos módulos. Sendo assim eu criaria 4 arquivos javascript.
+        </p>
+        <p>
+            O index.js que contém as informações de toda a página. 
+        </p> 
+        <p>
+            O noticias.js que vai ser responsável por lidar com as informações da seção de Notícias. 
+        </p>
+        <p>
+            O cotacaoRapidaAcoes.js vai ser o responsável por lidar com as informações da seção Cotação Rápida de Ações.
+        </p>
+        <p>
+            O acompanhamentoBolsa.js vai ser o responsável por lidar com as informações da seção Acompanhe a Bolsa.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            // index.js
+            var Index = Class.extend({
+                init: function() {
+                    this.noticias = new Noticias();
+                    this.cotacaoRapidaAcoes = new CotacaoRapidaAcoes();
+                    this.acompanhamentoBolsa = new AcompanhamentoBolsa();
+                }
+            });
+
+            // noticias.js
+            var Noticias = Class.extend({
+
+            }); 
+
+            // cotacaoRapidaAcoes.js
+            var CotacaoRapidaAcoes = Class.extend({
+
+            });
+
+            // acompanhamentoBolsa.js
+            var AcompanhamentoBolsa = Class.extend({
+                
+            });
+        </pre>
+
+        <p>
+            Dessa forma eu não só consigo garantir uma melhor organização do meu código afim de reduzir a complexidade de cada arquivo, como também consigo isolar os módulos afim de testa-los e reusa-los em outras telas da aplicação.
+        </p>
     </div>
 </div>    
