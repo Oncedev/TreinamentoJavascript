@@ -1,6 +1,248 @@
 <h1 class="section-title">Mustache.js</h1>
 <div class="section-content">
     <div class="subsection">
-    	<p>Em construção.</p>
+        <p>
+            Mustache é um framework de templates usado para renderizar html, arquivos de configuração, código fonte, enfim, qualquer coisa.
+        </p>
+        <p>
+            O Mustache é definido por seus criados como um template "logic-less", ou seja, não existe qualquer tipo de código na linguagem de template, não existem ifs, elses ou laços. No Mustache são usadas tags para mostrar os valores a serem gerados.
+        </p>
+        <p ng-non-bindable>
+            As tags do Mustache são definidas dentro de {{}}, por exemplo, {{nome}} e {{#produtos}} são exemplos de tags utilizadas.
+        </p>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Variáveis</h2>
+
+        <p>
+            A variável é o tipo mais básico de tag. A tag {{nome}} em um template Mustache vai tentar mostrar o valor da propriedade nome do objeto passado. Caso a propriedade nome não existe, por default, nada vai ser renderizado, porém esse comportamento pode ser configurável.
+        </p>
+        <p>
+            O exemplo abaixo mostra como podemos utilizar essas tags para renderizar um template. As tags nome e idade são exibidas no entanto a tag email não aparece pois não existe no objeto que vai ser renderizado.
+        </p>
+        <p>
+            O link para o código funcionando pode ser acessado <a href="http://jsfiddle.net/pauloortins/4nVq3/">aqui</a>.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <form>
+    
+            </form>
+
+            <script id="template" type="text/template">
+                <p>Nome: {{nome}}</p>
+                <p>Email: {{email}}</p>
+                <p>Idade: {{idade}}</p>    
+            </script>
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                var template = $("#template").html();
+                var objeto = {
+                    nome: "Paulo",
+                    idade: 25
+                };
+                
+                var html = Mustache.render(template, objeto);
+                
+                $("form").append(html);
+            });
+        </pre>
+
+        <pre class="prettyprint prettyprint">
+            // Output
+            Nome: Paulo
+
+            Email:
+
+            Idade: 25
+        </pre>        
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Listas</h2>
+
+        <p ng-non-bindable>
+            As tags do tipo {{#}} podem ser usadas para renderizar listas. Em caso de listas vazias nada é exibido. Veja o exemplo.
+        </p>
+        
+        <pre class="prettyprint prettyprinthtml">
+            <form>
+    
+            </form>
+
+            <script id="template" type="text/template">
+                {{#.}}
+                    <p>Nome: {{.}}</p>
+                {{/.}}
+            </script>
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                var template = $("#template").html();
+                var objeto = ['Paulo', 'Pedro', 'John'];
+                
+                var html = Mustache.render(template, objeto);
+                
+                $("form").append(html);
+            });
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            // Output
+            Nome: Paulo
+
+            Nome: Pedro
+
+            Nome: John
+        </pre>
+
+        <p>O código sendo executada pode ser visto <a href="http://jsfiddle.net/pauloortins/LB2xV/">aqui</a>.</p>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">Objetos</h2>
+
+        <p>Além de listas, propriedades também podem ser exibidos, ou não, caso sejam declaradas.</p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <form>
+    
+            </form>
+
+            <script id="template" type="text/template">
+                {{#repo}}
+                  <b>{{name}}</b>
+                {{/repo}}
+                {{^repo}}
+                  No repos :(
+                {{/repo}}
+            </script>
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                var template = $("#template").html();
+                var objeto = {
+                    pessoa: {nome: "John"}
+                };
+                
+                var html = Mustache.render(template, objeto);
+                
+                $("form").append(html);
+            });
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            // Output
+            Nome: John
+        </pre>
+    </div>
+    <div class="subsection">
+        <h2 class="subsection-title">
+            Tags Invertidas
+        </h2>
+
+        <p>
+            Tags podem ser invertidas, para que sejam mostradas caso a tag não possua valores ou seja um array vazio.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <form>
+    
+            </form>
+
+            <script id="template" type="text/template">
+                            {{#pessoa}}
+                                <p>Nome: {{nome}}</p>
+                            {{/pessoa}}
+                            {{^produto}}
+                                <p>Produto não existe.</p>
+                            {{/produto}}
+            </script>
+        </pre>        
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function() {
+                var template = $("#template").html();
+                var objeto = {
+                    pessoa: {nome: "John"}
+                };
+                
+                var html = Mustache.render(template, objeto);
+                
+                $("form").append(html);
+            });
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            // output
+            Nome: John
+
+            Produto não existe.
+        </pre>
+    </div>
+
+    <div class="subsection">
+        <h2 class="subsection-title">Partials</h2>   
+
+        <p>
+            Por último, o Mustache também permite que sejam feitos templates parciais, isso permite com que possamos reduzir a complexidade dos templates assim como aumentar o reusabilidade entre templates.
+        </p>
+        <p>
+            Para usar templates, devemos declarar os templates em uma tag script separada do template que vai chamar o template parcial, e nele usar a sintexe > "nome do template". A lista de templates parciais deve ser então carregada via javascript assim como o template pai e um objeto contendo os templates parciais devem ser passados por parâmetro no método render.
+        </p>
+        <p>
+            Veja o exemplo abaixo.
+        </p>
+
+        <pre class="prettyprint prettyprinthtml">
+            <form>
+    
+            </form>
+
+            <script id="template" type="text/template">
+                <h2>Names</h2>
+                {{#nomes}}
+                  {{> user}}
+                {{/nomes}}
+            </script>
+
+            <script id="user" type="text/template">
+                <p>{{nome}}</p>
+            </script>
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            $(document).ready(function () {
+                var template = $("#template").html();
+                var user = $("#user").html();
+                
+                var partials = {user: user};
+                
+                var objeto = {
+                    nomes: [
+                        {nome: "John"},
+                        {nome: "Fred"},
+                        {nome: "Kim"}            
+                    ]
+                };
+
+                var html = Mustache.render(template, objeto, partials);
+
+                $("form").append(html);
+            });
+        </pre>
+
+        <pre class="prettyprint prettyprinthtml">
+            // output
+            Names
+
+            John
+
+            Fred
+
+            Kim
+        </pre>
     </div>
 </div>    
